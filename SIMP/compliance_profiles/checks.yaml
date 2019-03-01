@@ -39,6 +39,7 @@ checks:
       - CCI-000195
     oval-ids:
     - xccdf_org:ssgproject:content_rule_accounts_password_pam_difok
+    - accounts_password_pam_difok
   oval:com.puppet.forge.simp.pam.cracklib_enforce_for_root:
     settings:
       parameter: pam::cracklib_enforce_for_root
@@ -129,6 +130,7 @@ checks:
       - CCI-000195
     oval-ids:
     - xccdf_org:ssgproject:content_rule_accounts_password_pam_minclass
+    - accounts_password_pam_minclass
   oval:com.puppet.forge.simp.pam.cracklib_minlen:
     settings:
       parameter: pam::cracklib_minlen
@@ -195,6 +197,7 @@ checks:
       - CCI-000366
     oval-ids:
     - xccdf_org:ssgproject:content_rule_accounts_password_pam_retry
+    - accounts_password_pam_retry
   oval:com.puppet.forge.simp.pam.cracklib_ucredit:
     settings:
       parameter: pam::cracklib_ucredit
@@ -233,6 +236,7 @@ checks:
       - CCI-002238
     oval-ids:
     - xccdf_org:ssgproject:content_rule_accounts_passwords_pam_faillock_deny
+    - accounts_passwords_pam_faillock_deny
   oval:com.puppet.forge.simp.pam.deny_if_unknown:
     settings:
       parameter: pam::deny_if_unknown
@@ -399,6 +403,32 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - IA-1
+  oval:com.puppet.forge.simp.pam.cracklib_maxrepeat.el6:
+    settings:
+      parameter: pam::cracklib_maxrepeat
+      value: 2
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:IA-5:1:a: true
+    identifiers:
+      nist_800_53_rev4:
+      - IA-5:1:a
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
+  oval:com.puppet.forge.simp.pam.unlock_time.el6:
+    settings:
+      parameter: pam::unlock_time
+      value: 900
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AC-7:b: true
+    identifiers:
+      nist_800_53_rev4:
+      - AC-7:b
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
   oval:com.puppet.forge.simp.pam.cracklib_maxrepeat:
     settings:
       parameter: pam::cracklib_maxrepeat
@@ -475,6 +505,7 @@ checks:
       operatingsystemmajrelease: '7'
     oval-ids:
     - xccdf_org:ssgproject:content_rule_accounts_passwords_pam_faillock_unlock_time
+    - accounts_passwords_pam_faillock_unlock_time
   oval:com.puppet.forge.simp.pam.cracklib_maxrepeat.nist_800_53_rev4:
     settings:
       parameter: pam::cracklib_maxrepeat
@@ -485,6 +516,9 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - IA-5:1:a
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
   oval:com.puppet.forge.simp.pam.unlock_time.nist_800_53_rev4:
     settings:
       parameter: pam::unlock_time
@@ -495,3 +529,6 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - AC-7:b
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
